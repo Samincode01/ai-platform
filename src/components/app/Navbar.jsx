@@ -1,14 +1,25 @@
-import { Link, useNavigate, useLocation } from "react-router";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+} from "react-router";
 
-function NavLink({ to, children }) {
-  const path = useLocation().pathname;
+function NavLink({
+  to,
+  children,
+}) {
+  const path =
+    useLocation().pathname;
+
   const active = path === to;
 
   return (
     <li>
       <Link
         to={to}
-        className={active ? "active" : ""}
+        className={
+          active ? "active" : ""
+        }
       >
         {children}
       </Link>
@@ -24,33 +35,49 @@ export function Navbar({
   const nav = useNavigate();
 
   return (
-    <nav id="navbar">
-      <div className="nav-start">
+    <nav
+      id="navbar"
+      className="flex items-center justify-between gap-2 px-3 py-3"
+    >
+      {/* Left */}
+      <div className="flex items-center gap-2 min-w-0">
         {showSidebarToggle && (
           <button
             type="button"
-            className="nav-hamburger"
-            onClick={onSidebarToggle}
+            className="nav-hamburger flex-shrink-0"
+            onClick={
+              onSidebarToggle
+            }
             aria-label={
               sidebarOpen
                 ? "Close menu"
                 : "Open menu"
             }
-            aria-expanded={sidebarOpen}
+            aria-expanded={
+              sidebarOpen
+            }
           >
-            {sidebarOpen ? "✕" : "☰"}
+            {sidebarOpen
+              ? "✕"
+              : "☰"}
           </button>
         )}
 
-        <Link to="/" className="nav-logo">
+        <Link
+          to="/"
+          className="nav-logo flex items-center gap-2 whitespace-nowrap text-base sm:text-lg md:text-2xl"
+        >
           <div className="logo-pulse" />
 
-          Neural
-          <em>Arena</em>
+          <span>
+            Neural
+            <em>Arena</em>
+          </span>
         </Link>
       </div>
 
-      <ul className="nav-links">
+      {/* Center */}
+      <ul className="nav-links hidden xl:flex">
         <NavLink to="/">
           Home
         </NavLink>
@@ -60,7 +87,7 @@ export function Navbar({
         </NavLink>
 
         <NavLink to="/how">
-          How to Participate
+          How
         </NavLink>
 
         <NavLink to="/leaderboard">
@@ -72,19 +99,24 @@ export function Navbar({
         </NavLink>
       </ul>
 
-      <div className="nav-actions">
+      {/* Right */}
+      <div className="nav-actions flex items-center gap-2 flex-shrink-0">
         <button
-          className="btn btn-outline btn-sm"
-          onClick={() => nav("/login")}
+          className="btn btn-outline btn-sm px-3"
+          onClick={() =>
+            nav("/login")
+          }
         >
           Sign In
         </button>
 
         <button
-          className="btn btn-primary btn-sm"
-          onClick={() => nav("/register")}
+          className="btn btn-primary btn-sm px-3"
+          onClick={() =>
+            nav("/register")
+          }
         >
-          Register Now
+          Register
         </button>
       </div>
     </nav>

@@ -42,21 +42,18 @@ export default function JudgeDashboard() {
         </div>
 
         <div
-          style={{
-            display: "flex",
-            gap: 10,
-          }}
+          className="flex gap-2.5 "
         >
           <Link
             to="/judge/problems"
-            className="btn btn-outline"
+            className="btn btn-outline btn-sm md:btn-md"
           >
             📋 Manage Problems
           </Link>
 
           <Link
             to="/judge/submissions"
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm md:btn-md"
           >
             ⚖️ Review Submissions
           </Link>
