@@ -10,7 +10,7 @@ function Shell({ title, children }) {
           </div>
 
           <button className="modal-close">
-            ×
+            ✕
           </button>
         </div>
 
