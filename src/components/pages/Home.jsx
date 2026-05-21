@@ -50,10 +50,10 @@ export default function Home() {
             <Link to="/how" className="btn btn-outline btn-lg">How It Works</Link>
           </div>
           <div className="hero-stats">
-            <div className="hero-stat"><div className="hero-stat-num">2<b>K+</b></div><div className="hero-stat-label">Participants</div></div>
-            <div className="hero-stat"><div className="hero-stat-num">৳<b>5L</b></div><div className="hero-stat-label">Prize Pool</div></div>
-            <div className="hero-stat"><div className="hero-stat-num">48<b>h</b></div><div className="hero-stat-label">Contest Duration</div></div>
-            <div className="hero-stat"><div className="hero-stat-num"><b>6</b></div><div className="hero-stat-label">AI Tracks</div></div>
+            <div className="hero-stat"><div className="hero-stat-num">2<b> K+</b></div><div className="hero-stat-label">Participants</div></div>
+            <div className="hero-stat"><div className="hero-stat-num">৳<b> 5L</b></div><div className="hero-stat-label">Prize Pool</div></div>
+            <div className="hero-stat"><div className="hero-stat-num">48<b> h</b></div><div className="hero-stat-label">Contest Duration</div></div>
+            <div className="hero-stat"><div className="hero-stat-num"><b>6 </b></div><div className="hero-stat-label"> AI Tracks</div></div>
           </div>
         </div>
       </section>

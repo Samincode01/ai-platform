@@ -1,5 +1,14 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
-import { RootLayout, NotFound } from "./components/layout/RootLayout";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router";
+
+import {
+  RootLayout,
+  NotFound,
+} from "./components/layout/RootLayout";
+
+import PrivateRoute from "./components/PrivateRoute";
 
 import Home from "./components/pages/Home";
 import How from "./components/pages/How";
@@ -29,29 +38,156 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "how", element: <How /> },
-      { path: "faq", element: <Faq /> },
-      { path: "leaderboard", element: <Leaderboard /> },
-      { path: "contests", element: <Contests /> },
-      { path: "contest", element: <Contest /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
-      { path: "dashboard", element: <Dashboard /> },
-      { path: "profile", element: <Profile /> },
-      { path: "problem", element: <Problem /> },
-      { path: "admin", element: <AdminDashboard /> },
-      { path: "admin/contests", element: <AdminContests /> },
-      { path: "admin/users", element: <AdminUsers /> },
-      { path: "admin/payments", element: <AdminPayments /> },
-      { path: "judge", element: <JudgeDashboard /> },
-      { path: "judge/problems", element: <JudgeProblems /> },
-      { path: "judge/submissions", element: <JudgeSubmissions /> },
-      { path: "judge/ranklist", element: <JudgeRanklist /> },
-      { path: "*", element: <NotFound /> },
+
+      {
+        path: "how",
+        element: <How />,
+      },
+
+      {
+        path: "faq",
+        element: <Faq />,
+      },
+
+      {
+        path: "leaderboard",
+        element: <Leaderboard />,
+      },
+
+      {
+        path: "contests",
+        element: <Contests />,
+      },
+
+      {
+        path: "contest",
+        element: <Contest />,
+      },
+
+      {
+        path: "login",
+        element: <Login />,
+      },
+
+      {
+        path: "register",
+        element: <Register />,
+      },
+
+      // User Routes
+      {
+        path: "dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "problem",
+        element: (
+          <PrivateRoute>
+            <Problem />
+          </PrivateRoute>
+        ),
+      },
+
+      // Admin Routes
+      {
+        path: "admin",
+        element: (
+          <PrivateRoute role="admin">
+            <AdminDashboard />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "admin/contests",
+        element: (
+          <PrivateRoute role="admin">
+            <AdminContests />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "admin/users",
+        element: (
+          <PrivateRoute role="admin">
+            <AdminUsers />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "admin/payments",
+        element: (
+          <PrivateRoute role="admin">
+            <AdminPayments />
+          </PrivateRoute>
+        ),
+      },
+
+      // Judge Routes
+      {
+        path: "judge",
+        element: (
+          <PrivateRoute role="judge">
+            <JudgeDashboard />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "judge/problems",
+        element: (
+          <PrivateRoute role="judge">
+            <JudgeProblems />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "judge/submissions",
+        element: (
+          <PrivateRoute role="judge">
+            <JudgeSubmissions />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "judge/ranklist",
+        element: (
+          <PrivateRoute role="judge">
+            <JudgeRanklist />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "*",
+        element: <NotFound />,
+      },
     ],
   },
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider
+      router={router}
+    />
+  );
 }
